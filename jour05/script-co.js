@@ -1,0 +1,37 @@
+$(document).ready(()=>{
+   function validateForm() {
+      // Get the value of the form with id="formId"
+      let returnedData = document.forms["formId"].value;
+      // Get the value of the input field with id="email"
+      var email = document.getElementById("email").value;
+      // Get the value of the input field with id="password"
+      var password = document.getElementById("password").value;
+      if (returnedData == "") {
+         console.log("Le form n'est pas pris en compte")
+         return false;
+      }
+      // Regular expression to check if the email is in the correct format
+      var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      // Check if the email is empty
+      if (email == "") {
+         alert("Email field must be filled out");
+         return false;
+      }
+      // Check if the email is in the correct format
+      if (!email.match(emailRegex)) {
+         alert("Please enter a valid email address");
+         return false;
+      }
+      // Check if the password is empty
+      if (password == "") {
+         alert("Password field must be filled out");
+         return false;
+      }
+      // Send a request to the server to check the user's credentials
+      // If the credentials are correct, return true to submit the form
+      // If the credentials are incorrect, display an error message and return false to prevent the form from being submitted
+      return true;
+   };
+
+   $("#submit").click(validateForm());
+});
